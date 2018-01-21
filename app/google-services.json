@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "198514402123",
+    "firebase_url": "https://liste-course-b60e3.firebaseio.com",
+    "project_id": "liste-course-b60e3",
+    "storage_bucket": "liste-course-b60e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198514402123:android:c6a0a88ecdc63e5f",
+        "android_client_info": {
+          "package_name": "com.wathis.listecourse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198514402123-prrvbhc4jd64j56vebt92bdvbks6147n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKKM5AENDDmuuvrNfZb66qq3f6ckKxhc0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

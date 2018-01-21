@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_consulter"
+        android:title="Chercher"
+        android:icon="@drawable/ic_search" />
+    <item android:id="@+id/action_nouvelle"
+        android:title="Créer"
+        android:icon="@drawable/ic_edit" />
+    <item android:id="@+id/action_reglages"
+        android:title="Réglages"
+        android:icon="@drawable/ic_settings" />
+</menu>
