@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//
     private Fragment olderFragment;
     protected void selectFragment(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
