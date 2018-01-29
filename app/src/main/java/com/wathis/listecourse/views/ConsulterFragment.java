@@ -9,31 +9,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.wathis.listecourse.R;
 import com.wathis.listecourse.models.Memo;
+import com.wathis.listecourse.models.NotifyDelegate;
 
-import java.util.LinkedList;
+import java.nio.channels.CompletionHandler;
 import java.util.List;
 
-public class ConsulterFragment extends Fragment {
+public class ConsulterFragment extends Fragment implements NotifyDelegate {
 
-
-    private DatabaseReference mDatabase;
     private List<Memo> memos;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private CompletionHandler handler;
 
-    public static Fragment newInstance() {
-        Fragment frag = new ConsulterFragment();
-        return frag;
+    static private ConsulterFragment sharedInstance;
+
+    static public ConsulterFragment newInstance() {
+        if (sharedInstance == null) {
+            sharedInstance = new ConsulterFragment();
+        }
+        return sharedInstance;
     }
 
+    public void notifyChanged() {
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,41 +44,11 @@ public class ConsulterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_consulter, container, false);
     }
 
-
-    private void writeNewMemo(String title, String description) {
-        String key = mDatabase.child("memo").push().getKey();
-        Memo memo = new Memo(title,description);
-        DatabaseReference ref = mDatabase.child("memo/" + key);
-        ref.setValue(memo);
-    }
-
-    private void readMemos() {
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                memos.clear();
-                for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                    Memo memo = snap.getValue(Memo.class);
-                    memos.add(memo);
-                }
-                mAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {System.out.println("Erreur");}
-        };
-        DatabaseReference mPostReference = mDatabase.child("memo");
-        mPostReference.addListenerForSingleValueEvent(postListener);
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        memos = new LinkedList<Memo>();
+        memos = Memo.sharedInstance().loadMemos(this);
         recyclerView = view.findViewById(R.id.recyclerView);
-        readMemos();
         recyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(mLayoutManager);

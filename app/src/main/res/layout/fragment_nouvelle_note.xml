@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/titleMemo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="8dp"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/descriptionMemo"
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:ems="10"
@@ -57,14 +57,14 @@
             tools:layout_editor_absoluteY="140dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="Ajouter"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/descriptionMemo" />
     </LinearLayout>
 
 </FrameLayout>

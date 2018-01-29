@@ -22,7 +22,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private List<Memo> memos;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private final TextView titleTextView;
+        private final TextView descriptionTextView;
 
         public ViewHolder(View v) {
             super(v);
@@ -33,12 +34,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                     Log.d(TAG, "Element " + getAdapterPosition() + " clicked.");
                 }
             });
-            textView = (TextView) v.findViewById(R.id.textView);
+            titleTextView = v.findViewById(R.id.textView);
+            descriptionTextView = v.findViewById(R.id.textViewDescription);
         }
 
-        public TextView getTextView() {
-            return textView;
+        public TextView getTitleTextView() {
+            return titleTextView;
         }
+        public TextView getDescriptionTextView() {return descriptionTextView;}
     }
 
     public CustomAdapter(List<Memo> memos) {
@@ -52,14 +55,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 .inflate(R.layout.text_row_item, viewGroup, false);
         return new ViewHolder(v);
     }
-    // END_INCLUDE(recyclerViewOnCreateViewHolder)
 
-    // BEGIN_INCLUDE(recyclerViewOnBindViewHolder)
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Log.d(TAG, "Element " + position + " set. titre : " +this.memos.get(position).titre);
-        viewHolder.getTextView().setText(this.memos.get(position).titre);
+        viewHolder.getTitleTextView().setText(this.memos.get(position).getTitre());
+        viewHolder.getDescriptionTextView().setText(this.memos.get(position).getDescription());
     }
 
     @Override

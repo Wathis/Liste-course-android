@@ -22,7 +22,14 @@ import java.util.List;
 
 public class ReglageFragment extends Fragment {
 
+    static private ReglageFragment sharedInstance;
 
+    static public ReglageFragment newInstance() {
+        if (sharedInstance == null) {
+            sharedInstance = new ReglageFragment();
+        }
+        return sharedInstance;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

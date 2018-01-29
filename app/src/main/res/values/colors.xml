@@ -5,4 +5,5 @@
     <color name="colorAccent">#3498db</color>
     <color name="white">#ffffff</color>
     <color name="flat_bleu">#34495e</color>
+    <color name="white_mat">#fdfbfd</color>
 </resources>

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-//
+
     private Fragment olderFragment;
     protected void selectFragment(MenuItem item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         Fragment frag = null;
         switch (item.getItemId()) {
             case R.id.action_nouvelle :
-                frag = new NouvelleNoteFragment();
+                frag = NouvelleNoteFragment.newInstance();
                 break;
             case R.id.action_consulter :
-                frag = new ConsulterFragment();
+                frag = ConsulterFragment.newInstance();
                 break;
             case R.id.action_reglages :
-                frag = new ReglageFragment();
+                frag = ReglageFragment.newInstance();
                 break;
         }
         if (olderFragment != null) {
